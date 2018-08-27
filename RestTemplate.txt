@@ -1,0 +1,14 @@
+Implements CommandLineRunner
+
+@Overrive
+public void run (String ... args) thwos Exception
+
+RestTemplate restTemplate = new RestTemplate();
+HttpHeaders heades = new HttpHeaders();
+headers.set("APIKey","5484215484521");  //Nombre Header, Valor Header
+headers.setAccept(Collections.singletonList(MediaType));
+String resorceURL = "" //url del endpoint
+HttpEnitity<String> entity = newHttpEntity<String>(headers);
+ResponseEntity<String> response = restTemplate.exchage(resourceURL,HttpMethod.POST, entity, String.class);
+
+response.getStatusCode()==HttpStatus.OK

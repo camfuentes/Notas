@@ -1,0 +1,61 @@
+-= Creacion proyecto Maven Web =-
+
+New
+Maven Proyect
+Create a simple proyect
+Next
+Completar Campos
+Finish
+Properties
+Proyect Facets
+Dynamic Web Module 3.1
+cambiar nombre a "webapp"
+Seleccionar Generate web.xml
+OK
+Apply
+OK
+
+-= Seleccionar servidor =-
+Properties
+Java Build Path
+Libraries
+Add Library
+Server Runtime
+Privotal tc Server
+Finish
+Apply
+OK
+
+-= Librerias Spring MVC =-
+
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-webmvc</artifactId>
+	<version>5.0.0.RELEASE</version>
+</dependency>
+
+https://spring.io/projects/spring-framework#overview
+
+-= Agregar Dependencias en el Deployment =-
+Properties
+Deployment Assembly
+Add
+Java Build Path Entries
+Next
+Maven Dependencies
+Finish
+
+-= DispatcherServlet =-
+New
+Spring Bean Configuration File
+Nombrar
+Seleccionar Namespaces
+Beans
+Context
+MVC
+Continuar
+
+
+
+
+

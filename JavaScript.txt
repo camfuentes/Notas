@@ -1,0 +1,16 @@
+COMANDOS JAVASCRIPT
+
+//https://www.codecademy.com/articles/glossary-javascript
+
+prompt // Solicitar datos al usuario
+confirm // Solicitar la confirmacion del usuario
+"".length // Devuelve el largo de la cadena
+"".substring(,) // Devuelve los caracteres desde cierta ubicacion hasta cierta ubicacion
+console.log() // Registro de pantalla
+var // Definir variables
+> // Mayor que
+< // Menor que
+<= // Menor o igual que
+>= // Mayor o igual que
+=== // Igual que
+!== // Distinto de

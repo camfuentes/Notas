@@ -1,0 +1,8 @@
+Ctrl + Shift + O = Eliminar imports no utilizados
+Ctrl + Shift + F = Dar formato (ordenar)
+Seleccionar, Ctrl + Alt + H = Lista de utilizacion (llamado) del metodo
+Ctrl + Shift + R = Buscar recursos dentro de nuestro proyecto
+Seleccionar, Ctrl + 1 = Utilizar StringBuilder
+Ctrl + Shift + T = Buscador de clases (general)
+Ctrl + F6 = Lista de archivos abiertos
+Ctrl + H = Buscar cadena en archivos

@@ -1,0 +1,42 @@
+COMANDOS GIT
+
+git version // Revisar la version de GIT instalada
+git config --global user.name "nombredeusuario" // Asignar el nombre del usuario que esta trabajando
+git config --global user.email "emaildelusuario" // Asignar el correo electronico del usario que esta trabajando
+git config --global credential.helper 'cache --timeout=36000' // Cachear la contraseña
+git init // Crea un nuevo repositorio GIT
+git status // Ver el estado del repositorio
+git add <file> // Agregar un archivo para ser registrado (cambios)
+git add . // Agregar todos los archivos cambiados
+git commit // Registrar cambios
+git commit -m "nombre del commit" // realizar un commit sin abrir vim
+git log // Ver el registro de los commit
+git diff // Ver los cambios hechos sin guardar
+git commit --amend // Volver al ultimo commit y agregar un cambio
+git checkout -- <file> // Recuperar el archivo desde el ultimo commit
+git reset HEAD <file> // Recuperar el archivo desde el ultimo commit despues de add
+git log --oneline // Ver los commit de manera resumida
+git reset <codigo commit> // Vuelve al commit dejando los cambios locales 
+git reset --hard <codigo commit> // Vuelve al commit eliminando todos los cambios posteriores
+git reset --soft <codigo commit> // Vuelve al commit pero deja los cambios en el staged
+git HEAD <codigo commit> // Apuntar a algun commit
+git diff <codigo commit 1> <codigo commit 2> // Ver la diferencia entre dos commit especificos
+git log --oneline --decorate // Ver el registro de los commit y a cual estamos apuntando
+git revert <codigo commit> // Deshacer los cambio hechos en un commit
+git revert --no-commit <codigo commit> // Deshacer los cambio hechos en un commit pero sin realizar el commit (guardarlo en stage)
+git revert --continue // Realizar el commit (en caso de haber utilizado revert --no-commit)
+git branch // Ver la lista de ramas creadas
+git branch <nombre de la rama> // Crear una rama con un nombre definido
+git checkout <nombre de la rama> // Cambiar a la rama de trabajo
+git checkout -b <nombre de la rama> // Crear una rama y cambiarse a ella
+git branch -m <nombre de la rama> <nuevo nombre> // Cambiar nombre de una rama
+git branch -d <nombre de la rama> // Eliminar una rama
+git log --oneline --decorate --all --graph // Ver registro de todos los commit de una manera mas grafica
+git merge <nombre de la rama> // Une la rama a la que estamos apuntado con otra a la cual nombremos
+git config --global alias.<nombre alias> '<comando completo>' // Simplificar una linea de comando en un alias para mayor facilidad
+git config --global --get-regexp alias // Obtener un listado con todos los alias creados
+git config --global --unset alias.<nombre del alias> // Eliminar un alias
+git remote add origin <URL> // Conectarse a un repositorio remoto
+git push -u origin master // subir todos los archivos al repositorio master
+git pull origin <nombre de la rama> // Descargar todos los archivos correspondientes a una rama
+git clone <URL> // Descarga un repositorio remoto

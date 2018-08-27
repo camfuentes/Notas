@@ -1,0 +1,5 @@
+-- Appendix
+https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+--Thymeleaf
+https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#introducing-thymeleaf
