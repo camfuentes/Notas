@@ -1,0 +1,116 @@
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import org.springframework.stereotype.Component;
+
+import com.equifax.eifchughnest.model.Token;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
+@Component
+public class DeserializeToken {
+
+	@SuppressWarnings("unused")
+	private final static Log LOG = LogFactory.getLog(DeserializeToken.class);
+
+	public static Boolean VerifyOrganization(String oauthToken) {
+		byte[] decodedBytes = Base64.decodeBase64(oauthToken);
+		String decoded = "";
+
+		try {
+			decoded = new String(decodedBytes, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		String organization = decoded.substring(decoded.indexOf("\"organizations\":\"") + 17, decoded.length());
+		organization = organization.split("\"")[0];
+		if (organization.toLowerCase().contains("eid")) {
+			return true;
+		}
+		return false;
+	}
+
+	public static String GetOrganizations(String oauthToken) {
+		byte[] decodedBytes = Base64.decodeBase64(oauthToken);
+		String decoded = "";
+
+		try {
+			decoded = new String(decodedBytes, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		String organizations = decoded.substring(decoded.indexOf("\"organizations\":\"") + 17, decoded.length());
+		organizations = organizations.split("\"")[0];
+
+		return organizations;
+	}
+
+	public static String ModelToToken(Object object) {
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = "";
+		try {
+			json = ow.writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+
+		byte[] jsonByte = json.getBytes(StandardCharsets.UTF_8);
+		String encoded = Base64.encodeBase64String(jsonByte);
+
+		return encoded;
+	}
+
+	public static String DecodeTokenToString(String oauthToken) {
+		byte[] decodedBytes = Base64.decodeBase64(oauthToken);
+		String decoded = "";
+
+		try {
+			decoded = new String(decodedBytes, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return decoded;
+	}
+
+	public static Token TokenToModel(String token) {
+		String decoded = DecodeTokenToString(token);
+		Token refreshToken = null;
+
+		ObjectMapper m = new ObjectMapper();
+		try {
+			refreshToken = m.readValue(decoded, Token.class);
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return refreshToken;
+	}
+	
+	public static String ObjectToJsonString (Object object) {
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = "";
+		try {
+			json = ow.writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
+	
+
+}
