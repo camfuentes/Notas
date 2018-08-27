@@ -11,4 +11,7 @@ String resorceURL = "" //url del endpoint
 HttpEnitity<String> entity = newHttpEntity<String>(headers);
 ResponseEntity<String> response = restTemplate.exchage(resourceURL,HttpMethod.POST, entity, String.class);
 
+ResponseEntity<POJO[]> response = restTemplate.exchage(resourceURL,HttpMethod.POST, entity, POJO[].class);
+
 response.getStatusCode()==HttpStatus.OK
+response.getBody();
