@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions targetNamespace="http://eid.equifax.com/soap/schema/chile/wsdl" xmlns:ns1="http://eid.equifax.com/soap/schema/chile" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://eid.equifax.com/soap/schema/chile/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:eid="http://eid.equifax.com/soap/schema/chile" xmlns:ns1="http://eid.equifax.com/soap/schema/chile" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://eid.equifax.com/soap/schema/chile/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://eid.equifax.com/soap/schema/chile" schemaLocation="http://aeiu7lc9a015.app.c9.equifax.com:19080/uru/soap-latam/ut/70/chile?xsd=chile_soap_schema.xsd"></xsd:import>
+		</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="startTransactionResponse">
+    <wsdl:part element="ns1:InitialResponse" name="InitialResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidTransactionKeyFault">
+    <wsdl:part element="ns1:InvalidTransactionKeyFault" name="InvalidTransactionKeyFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="interactiveQueryResponseRequest">
+    <wsdl:part element="ns1:IQAnswerRequest" name="IQAnswerRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="interactiveQueryResponseResponse">
+    <wsdl:part element="ns1:FinalResponse" name="FinalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CredentialsErrorFault">
+    <wsdl:part element="ns1:CredentialsErrorFault" name="CredentialsErrorFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidationErrorFault">
+    <wsdl:part element="ns1:ValidationErrorFault" name="ValidationErrorFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTransactionRequest">
+    <wsdl:part element="ns1:InitialRequest" name="InitialRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="chilePortType">
+    <wsdl:operation name="startTransaction">
+      <wsdl:input message="tns:startTransactionRequest" name="startTransactionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:startTransactionResponse" name="startTransactionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ValidationErrorFault" name="ValidationErrorFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CredentialsErrorFault" name="CredentialsErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="interactiveQueryResponse">
+      <wsdl:input message="tns:interactiveQueryResponseRequest" name="interactiveQueryResponseRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:interactiveQueryResponseResponse" name="interactiveQueryResponseResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ValidationErrorFault" name="ValidationErrorFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CredentialsErrorFault" name="CredentialsErrorFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidTransactionKeyFault" name="InvalidTransactionKeyFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="chileHttpBinding" type="tns:chilePortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></wsdlsoap:binding>
+    <wsdl:operation name="startTransaction">
+      <wsdlsoap:operation soapAction=""></wsdlsoap:operation>
+      <wsdl:input name="startTransactionRequest">
+        <wsdlsoap:body use="literal"></wsdlsoap:body>
+      </wsdl:input>
+      <wsdl:output name="startTransactionResponse">
+        <wsdlsoap:body use="literal"></wsdlsoap:body>
+      </wsdl:output>
+      <wsdl:fault name="ValidationErrorFault">
+        <wsdlsoap:fault name="ValidationErrorFault" use="literal"></wsdlsoap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="CredentialsErrorFault">
+        <wsdlsoap:fault name="CredentialsErrorFault" use="literal"></wsdlsoap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="interactiveQueryResponse">
+      <wsdlsoap:operation soapAction=""></wsdlsoap:operation>
+      <wsdl:input name="interactiveQueryResponseRequest">
+        <wsdlsoap:body use="literal"></wsdlsoap:body>
+      </wsdl:input>
+      <wsdl:output name="interactiveQueryResponseResponse">
+        <wsdlsoap:body use="literal"></wsdlsoap:body>
+      </wsdl:output>
+      <wsdl:fault name="ValidationErrorFault">
+        <wsdlsoap:fault name="ValidationErrorFault" use="literal"></wsdlsoap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="CredentialsErrorFault">
+        <wsdlsoap:fault name="CredentialsErrorFault" use="literal"></wsdlsoap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidTransactionKeyFault">
+        <wsdlsoap:fault name="InvalidTransactionKeyFault" use="literal"></wsdlsoap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="chile">
+    <wsdl:port binding="tns:chileHttpBinding" name="chileHttpPort">
+      <wsdlsoap:address location="http://aeiu7lc9a015.app.c9.equifax.com:19080/uru/soap-latam/ut/70/chile"></wsdlsoap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
